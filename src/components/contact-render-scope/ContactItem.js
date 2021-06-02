@@ -1,85 +1,90 @@
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 
-const ContactItem = ({ index, call, onRemove, onEdit, onSave, onCancel }) => {
+import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
+import { useState } from "react";
+
+const ContactItem = ({ index, call, onRemove, onEdit, onCancel, onSave }) => {
+  const [isEdit, setIsEdit] = useState(call.isEdit);
   return (
-    <ListItem>
-      <tr>
-        <td>
+    <TableRow>
+      <TableCell style={{ width: "10%" }}>
+        <Button
+          onClick={() => {
+            onRemove(index);
+          }}
+        >
+          {" "}
+          삭제
+        </Button>
+      </TableCell>
+      <TableCell style={{ width: "15%" }}>
+        {!isEdit && <span>{call.callName}</span>}
+        {isEdit && (
+          <TextField
+            type="text"
+            className={"cname"}
+            defaultValue={call.callName}
+          ></TextField>
+        )}
+      </TableCell>
+      <TableCell style={{ width: "25%" }}>
+        {!isEdit && <span>{call.callNumber}</span>}
+        {isEdit && (
+          <TextField
+            type="text"
+            className={"cnumber"}
+            defaultValue={call.callNumber}
+          ></TextField>
+        )}
+      </TableCell>
+      <TableCell style={{ width: "30%" }}>
+        {!isEdit && <span>{call.callMail}</span>}
+        {isEdit && (
+          <TextField
+            type="text"
+            className={"cmail"}
+            defaultValue={call.callMail}
+          ></TextField>
+        )}
+      </TableCell>
+      <TableCell style={{ width: "20%" }}>
+        {!isEdit && <span>{call.memo}</span>}
+        {!isEdit && (
           <Button
             onClick={() => {
-              onRemove(index);
+              onEdit(index);
+              setIsEdit(true);
             }}
           >
-            삭제
+            edit
           </Button>
-        </td>
-        <td>
-          {!call.isEdit && <ListItemText>{call.callName}</ListItemText>}
-          {call.isEdit && (
-            <TextField
-              type="text"
-              className={"cname"}
-              defaultValue={call.callName}
-            ></TextField>
-          )}
-        </td>
-        <td>
-          {!call.isEdit && <ListItemText>{call.callNumber}</ListItemText>}
-          {call.isEdit && (
-            <TextField
-              type="text"
-              className={"cnumber"}
-              defaultValue={call.callNumber}
-            ></TextField>
-          )}
-        </td>
-        <td>
-          {!call.isEdit && <ListItemText>{call.callMail}</ListItemText>}
-          {call.isEdit && (
-            <TextField
-              type="text"
-              className={"cmail"}
-              defaultValue={call.callMail}
-            ></TextField>
-          )}
-        </td>
-        <td>
-          {!call.isEdit && <ListItemText>{call.memo}</ListItemText>}
-          {!call.isEdit && (
-            <Button
-              onClick={() => {
-                onEdit(index);
-              }}
-            >
-              edit
-            </Button>
-          )}
+        )}
 
-          {call.isEdit && (
-            <Button
-              onClick={() => {
-                onSave(index);
-              }}
-            >
-              save
-            </Button>
-          )}
+        {isEdit && (
+          <Button
+            onClick={() => {
+              onSave(index);
+              setIsEdit(false);
+            }}
+          >
+            save
+          </Button>
+        )}
 
-          {call.isEdit && (
-            <Button
-              onClick={() => {
-                onCancel(index);
-              }}
-            >
-              cancel
-            </Button>
-          )}
-        </td>
-      </tr>
-    </ListItem>
+        {isEdit && (
+          <Button
+            onClick={() => {
+              onCancel(index);
+              setIsEdit(false);
+            }}
+          >
+            cancel
+          </Button>
+        )}
+      </TableCell>
+    </TableRow>
   );
 };
 

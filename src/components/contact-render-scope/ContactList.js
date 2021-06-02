@@ -1,4 +1,5 @@
-import List from "@material-ui/core/List";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
 import ContactItem from "./ContactItem";
 
 const ContactList = ({
@@ -6,12 +7,12 @@ const ContactList = ({
   trRef,
   onRemove,
   onEdit,
-  onSave,
   onCancel,
+  onSave,
 }) => {
   return (
-    <div>
-      <List ref={trRef} style={{ height: "40vh", overflowY: "auto" }}>
+    <Table>
+      <TableBody ref={trRef} style={{ height: "40vh", overflowY: "auto" }}>
         {callList.map((call, index) => (
           <ContactItem
             key={index}
@@ -19,12 +20,12 @@ const ContactList = ({
             call={call}
             onRemove={onRemove}
             onEdit={onEdit}
-            onSave={onSave}
             onCancel={onCancel}
+            onSave={onSave}
           />
         ))}
-      </List>
-    </div>
+      </TableBody>
+    </Table>
   );
 };
 

@@ -2,7 +2,6 @@ import { useState, useRef } from "react";
 
 import ContactForm from "./ContactForm";
 import ContactList from "./ContactList";
-import Contact from "./ContactMod";
 
 const ContactContainer = () => {
   const [callList, setCallList] = useState([
@@ -19,15 +18,14 @@ const ContactContainer = () => {
   const tr = useRef();
 
   const add = () => {
-    setCallList(
-      [
-        {
-          callName: input1.current.value,
-          callNumber: input2.current.value,
-          callMail: input3.current.value,
-        },
-      ].concat(callList)
-    );
+    setCallList([
+      {
+        callName: input1.current.value,
+        callNumber: input2.current.value,
+        callMail: input3.current.value,
+      },
+      ...callList,
+    ]);
 
     input1.current.value = "";
     input2.current.value = "";
@@ -82,24 +80,18 @@ const ContactContainer = () => {
   return (
     <>
       <ContactForm
-        inputRef={input1}
-        inputRef={input2}
-        inputRef={input3}
+        inputRef1={input1}
+        inputRef2={input2}
+        inputRef3={input3}
         onAdd={add}
       />
-      <div>
-        <input type="text" placeholder="이름" ref={input1} />
-        <input type="text" placeholder="연락처" ref={input2} />
-        <input type="text" placeholder="이메일" ref={input3} />
-        <button onClick={add}>추가</button>
-      </div>
       <ContactList
         callList={callList}
         trRef={tr}
         onRemove={remove}
         onEdit={edit}
-        onSave={save}
         onCancel={cancel}
+        onSave={save}
       />
     </>
   );
