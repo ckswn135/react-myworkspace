@@ -24,7 +24,7 @@ const ContactItem = ({ index, call, onRemove, onEdit, onCancel, onSave }) => {
         {isEdit && (
           <TextField
             type="text"
-            className={"cname"}
+            inputProps={{ className: "cname" }}
             defaultValue={call.callName}
           ></TextField>
         )}
@@ -34,7 +34,7 @@ const ContactItem = ({ index, call, onRemove, onEdit, onCancel, onSave }) => {
         {isEdit && (
           <TextField
             type="text"
-            className={"cnumber"}
+            inputProps={{ className: "cnumber" }}
             defaultValue={call.callNumber}
           ></TextField>
         )}
@@ -44,7 +44,7 @@ const ContactItem = ({ index, call, onRemove, onEdit, onCancel, onSave }) => {
         {isEdit && (
           <TextField
             type="text"
-            className={"cmail"}
+            inputProps={{ className: "cmail" }}
             defaultValue={call.callMail}
           ></TextField>
         )}
