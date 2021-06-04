@@ -34,7 +34,10 @@ import {
 import Home from "./components/home/Home";
 
 // 라우터에 로딩되는 컴포넌트는 컨테이너 컴포넌트
-const Todo = lazy(() => import("./components/todo-render-scope/Todo"));
+const Todo = lazy(() => import("./components/todo-router-param/Todo"));
+const TodoDetail = lazy(() =>
+  import("./components/todo-router-param/TodoDetail")
+);
 const Contact = lazy(() => import("./components/contact-render-scope/Contact"));
 
 const drawerWidth = "240px";
@@ -183,7 +186,9 @@ function App() {
             <Suspense fallback={<div>Loading...</div>}>
               <Switch>
                 <Route path="/" component={Home} exact></Route>
-                <Route path="/todo" component={Todo}></Route>
+                <Route path="/todo" component={Todo} exact></Route>
+                {/* :매개변수명 -> 컴포넌트에서 변수처럼 받을 수 있음 */}
+                <Route path="/todo/:id" component={TodoDetail}></Route>
                 <Route path="/contacts" component={Contact}></Route>
               </Switch>
             </Suspense>
@@ -195,5 +200,3 @@ function App() {
 }
 
 export default App; // export: 내보내기, import: 가져오기
-
-// App.js에 커멘트 추가
