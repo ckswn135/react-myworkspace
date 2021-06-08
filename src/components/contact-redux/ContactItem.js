@@ -24,7 +24,7 @@ const ContactItem = ({ call }) => {
     const number = inputRef2.current.value;
     const mail = inputRef3.current.value;
     dispatch({
-      type: "SAVE_CONTACT",
+      type: "MODIFY_CONTACT",
       payload: { id, name, number, mail },
     });
   };
