@@ -1,11 +1,16 @@
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ContactItem from "./ContactItem";
 
 const ContactList = () => {
   const callList = useSelector((state) => state.contact);
-  console.log(callList);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: "FETCH_CONTACTLIST" });
+  }, [dispatch]);
 
   return (
     <Table>

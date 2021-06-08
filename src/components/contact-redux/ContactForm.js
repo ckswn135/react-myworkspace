@@ -16,14 +16,13 @@ const ContactForm = () => {
   const dispatch = useDispatch();
 
   const add = () => {
-    const id = new Date().getTime();
-    const callName = inputRef1.current.value;
-    const callNumber = inputRef2.current.value;
-    const callMail = inputRef3.current.value;
+    const name = inputRef1.current.value;
+    const number = inputRef2.current.value;
+    const mail = inputRef3.current.value;
 
     dispatch({
       type: "ADD_CONTACT",
-      payload: { id, callName, callNumber, callMail },
+      payload: { name, number, mail },
     });
     inputRef1.current.value = "";
     inputRef2.current.value = "";

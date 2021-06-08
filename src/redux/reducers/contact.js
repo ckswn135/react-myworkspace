@@ -1,29 +1,19 @@
-const initialState = [
-  {
-    id: 1,
-    callName: "qqq",
-    callNumber: "011-1241-124",
-    callMail: "naver.com",
-  },
-  {
-    id: 2,
-    callName: "www",
-    callNumber: "010-1671-0875",
-    callMail: "gmail.com",
-  },
-];
+const initialState = [];
 
 const contact = (state = initialState, action) => {
   switch (action.type) {
-    case "ADD_CONTACT":
+    case "ADD_CONTACT_SUCCEEDED":
       return [{ ...action.payload }, ...state];
-    case "REMOVE_CONTACT":
-      return state.filter((todo) => todo.id !== action.payload);
+    case "REMOVE_CONTACT_SUCCEEDED":
+      return state.filter((contact) => contact.id !== action.payload);
 
-    case "SAVE_CONTACT":
+    case "MODIFY_CONTACT_SUCCEEDED":
       return state.map((contact) =>
         contact.id === action.payload.id ? { ...action.payload } : contact
       );
+
+    case "FETCH_CONTACTLIST_SUCCEEDED":
+      return [...action.payload];
 
     default:
       return state;

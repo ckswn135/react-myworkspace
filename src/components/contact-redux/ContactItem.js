@@ -20,12 +20,12 @@ const ContactItem = ({ call }) => {
   };
 
   const save = (id) => {
-    const callName = inputRef1.current.value;
-    const callNumber = inputRef2.current.value;
-    const callMail = inputRef3.current.value;
+    const name = inputRef1.current.value;
+    const number = inputRef2.current.value;
+    const mail = inputRef3.current.value;
     dispatch({
       type: "SAVE_CONTACT",
-      payload: { id, callName, callNumber, callMail },
+      payload: { id, name, number, mail },
     });
   };
   return (
@@ -42,12 +42,11 @@ const ContactItem = ({ call }) => {
       <TableCell style={{ width: "15%" }}>
         {!isEdit && (
           <span
-            style={{ cursor: "pointer" }}
             onClick={() => {
               history.push(`/contact/${call.id}`);
             }}
           >
-            {call.callName}
+            {call.name}
           </span>
         )}
         {isEdit && (
@@ -55,19 +54,18 @@ const ContactItem = ({ call }) => {
             type="text"
             inputProps={{ className: "cname" }}
             inputRef={inputRef1}
-            defaultValue={call.callName}
+            defaultValue={call.name}
           ></TextField>
         )}
       </TableCell>
       <TableCell style={{ width: "25%" }}>
         {!isEdit && (
           <span
-            style={{ cursor: "pointer" }}
             onClick={() => {
               history.push(`/contact/${call.id}`);
             }}
           >
-            {call.callNumber}
+            {call.number}
           </span>
         )}
         {isEdit && (
@@ -75,19 +73,18 @@ const ContactItem = ({ call }) => {
             type="text"
             inputProps={{ className: "cnumber" }}
             inputRef={inputRef2}
-            defaultValue={call.callNumber}
+            defaultValue={call.number}
           ></TextField>
         )}
       </TableCell>
       <TableCell style={{ width: "30%" }}>
         {!isEdit && (
           <span
-            style={{ cursor: "pointer" }}
             onClick={() => {
               history.push(`/contact/${call.id}`);
             }}
           >
-            {call.callMail}
+            {call.mail}
           </span>
         )}
         {isEdit && (
@@ -95,7 +92,7 @@ const ContactItem = ({ call }) => {
             type="text"
             inputProps={{ className: "cmail" }}
             inputRef={inputRef3}
-            defaultValue={call.callMail}
+            defaultValue={call.mail}
           ></TextField>
         )}
       </TableCell>
