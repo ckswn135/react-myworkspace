@@ -4,12 +4,10 @@ import Button from "@material-ui/core/Button";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import { useRef, useState } from "react";
-import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 
 const ContactItem = ({ call }) => {
   const [isEdit, setIsEdit] = useState(call.isEdit);
-  const history = useHistory();
   const dispatch = useDispatch();
   const inputRef1 = useRef();
   const inputRef2 = useRef();
@@ -40,15 +38,7 @@ const ContactItem = ({ call }) => {
         </Button>
       </TableCell>
       <TableCell style={{ width: "15%" }}>
-        {!isEdit && (
-          <span
-            onClick={() => {
-              history.push(`/contact/${call.id}`);
-            }}
-          >
-            {call.name}
-          </span>
-        )}
+        {!isEdit && <span>{call.name}</span>}
         {isEdit && (
           <TextField
             type="text"
@@ -59,15 +49,7 @@ const ContactItem = ({ call }) => {
         )}
       </TableCell>
       <TableCell style={{ width: "25%" }}>
-        {!isEdit && (
-          <span
-            onClick={() => {
-              history.push(`/contact/${call.id}`);
-            }}
-          >
-            {call.number}
-          </span>
-        )}
+        {!isEdit && <span>{call.number}</span>}
         {isEdit && (
           <TextField
             type="text"
@@ -78,15 +60,7 @@ const ContactItem = ({ call }) => {
         )}
       </TableCell>
       <TableCell style={{ width: "30%" }}>
-        {!isEdit && (
-          <span
-            onClick={() => {
-              history.push(`/contact/${call.id}`);
-            }}
-          >
-            {call.mail}
-          </span>
-        )}
+        {!isEdit && <span>{call.mail}</span>}
         {isEdit && (
           <TextField
             type="text"
