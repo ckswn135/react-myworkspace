@@ -4,22 +4,28 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ContactItem from "./ContactItem";
 
+import ContactPagination from "./ContactPagination";
+
 const ContactList = () => {
-  const callList = useSelector((state) => state.contact);
+  const data = useSelector((state) => state.contact);
+  console.log(data);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({ type: "FETCH_CONTACTLIST" });
+    dispatch({ type: "FETCH_CONTACTLIST_PAGING" });
   }, [dispatch]);
 
   return (
-    <Table>
-      <TableBody style={{ height: "40vh", overflowY: "auto" }}>
-        {callList.map((call) => (
-          <ContactItem key={call.id} call={call} />
-        ))}
-      </TableBody>
-    </Table>
+    <div style={{ height: "40vh", overflowY: "auto" }}>
+      <Table>
+        <TableBody>
+          {data.content.map((contact) => (
+            <ContactItem key={contact.id} contact={contact} />
+          ))}
+        </TableBody>
+      </Table>
+      <ContactPagination />
+    </div>
   );
 };
 
