@@ -74,13 +74,6 @@ const ContactForm = () => {
             </Button>
           </TableCell>
         </TableRow>
-        <TableRow>
-          <TableCell style={{ width: "10%" }}>삭제</TableCell>
-          <TableCell style={{ width: "15%" }}>이름</TableCell>
-          <TableCell style={{ width: "25%" }}>연락처</TableCell>
-          <TableCell style={{ width: "30%" }}>이메일</TableCell>
-          <TableCell style={{ width: "20%" }}>수정</TableCell>
-        </TableRow>
       </TableHead>
     </Table>
   );
