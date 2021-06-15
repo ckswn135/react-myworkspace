@@ -8,33 +8,20 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+const LineChartSample = ({ data }) => {
+  console.log("--linechart data--");
+  console.log(data);
 
-const LineChartSample = ({ locationCurrentData }) => {
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <LineChart
-        width={500}
-        height={300}
-        data={locationCurrentData}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
+    <ResponsiveContainer width="100%" height="70%">
+      <LineChart data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="dataTime" />
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line
-          type="monotone"
-          dataKey="pm10"
-          stroke="#8884d8"
-          activeDot={{ r: 8 }}
-        />
-        <Line type="monotone" dataKey="pm25" stroke="#82ca9d" />
+        <Line type="monotone" dataKey="pm10" stroke="#8884d8" />
+        <Line type="monotone" dataKey="pm25" stroke="#66bb6a" />
       </LineChart>
     </ResponsiveContainer>
   );
