@@ -31,6 +31,7 @@ import {
 } from "@material-ui/icons";
 
 import Home from "./components/home/Home";
+import Sun from "./components/sun/Sun";
 
 import { createStore, applyMiddleware } from "redux"; // saga middleware를 redux store에 적용하는데 씀
 import { Provider } from "react-redux";
@@ -146,6 +147,14 @@ function App() {
             <ListItemText>Contacts</ListItemText>
           </ListItem>
         </Link>
+        <Link to="/sun" className={classes.link}>
+          <ListItem button>
+            <ListItemIcon>
+              <TableChart />
+            </ListItemIcon>
+            <ListItemText>sun</ListItemText>
+          </ListItem>
+        </Link>
       </List>
     </>
   );
@@ -210,6 +219,7 @@ function App() {
                   {/* :매개변수명 -> 컴포넌트에서 변수처럼 받을 수 있음 */}
                   <Route path="/todo/:id" component={TodoDetail}></Route>
                   <Route path="/contacts" component={Contact} exact></Route>
+                  <Route path="/sun" component={Sun} exact></Route>
                 </Switch>
               </Suspense>
             </main>
