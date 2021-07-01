@@ -58,6 +58,7 @@ sagaMiddleWare.run(rootSaga);
 const Todo = lazy(() => import("./components/todo-redux/Todo"));
 const TodoDetail = lazy(() => import("./components/todo-redux/TodoDetail"));
 const Contact = lazy(() => import("./components/contact-redux/Contact"));
+const Note = lazy(() => import("./components/note/Note"));
 
 const drawerWidth = "240px";
 
@@ -152,7 +153,15 @@ function App() {
             <ListItemIcon>
               <TableChart />
             </ListItemIcon>
-            <ListItemText>sun</ListItemText>
+            <ListItemText>Sun</ListItemText>
+          </ListItem>
+        </Link>
+        <Link to="/note" className={classes.link}>
+          <ListItem button>
+            <ListItemIcon>
+              <TableChart />
+            </ListItemIcon>
+            <ListItemText>Note</ListItemText>
           </ListItem>
         </Link>
       </List>
@@ -220,6 +229,7 @@ function App() {
                   <Route path="/todo/:id" component={TodoDetail}></Route>
                   <Route path="/contacts" component={Contact} exact></Route>
                   <Route path="/sun" component={Sun} exact></Route>
+                  <Route path="/note" component={Note} exact></Route>
                 </Switch>
               </Suspense>
             </main>

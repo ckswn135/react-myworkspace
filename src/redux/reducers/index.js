@@ -2,12 +2,14 @@
 import { combineReducers } from "redux";
 import todo from "./todo-paging"; // 하위 리듀서를 import
 import contact from "./contact-paging";
+import note from "./note-paging";
 
 const rootReducer = combineReducers({
   // todo: store에 state이름
   // todo state를 처리하는 리듀서가 todo 함수
   todo,
   contact,
+  note,
 });
 
 export default rootReducer;
