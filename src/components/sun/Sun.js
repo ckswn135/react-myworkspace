@@ -44,13 +44,11 @@ const transformLocationData = (source) => {
 
 const transformMonthData = (source, location) => {
   if (source.length === 0) return [];
-  const transData = [];
-  let item = {};
+  const transData = source.filter((source) => {
+    return source.location === location;
+  });
 
-  if (source.filter(source.index % 13 === location)) {
-    transData.unshift(item);
-    item = {};
-  }
+  transData.reverse();
   return transData;
 };
 
@@ -71,7 +69,7 @@ const transformLocationTableData = (source) => {
 
 const Sun = () => {
   const classes = useStyles();
-  const [location, setLocation] = useState("0");
+  const [location, setLocation] = useState("강릉");
   const [source, setSource] = useState([]);
 
   useEffect(() => {
@@ -108,7 +106,7 @@ const Sun = () => {
             </Select>
             {"\u00A0"} 월 단위 출몰 시간
           </h3>
-          <AreaChartMonth data={transformMonthData(source)} />
+          <AreaChartMonth data={transformMonthData(source, location)} />
         </Paper>
       </Grid>
       <Hidden mdDown>
