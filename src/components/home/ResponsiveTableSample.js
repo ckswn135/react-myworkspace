@@ -31,8 +31,8 @@ const pm25Color = (val) => {
 };
 
 const ResponsiveTable = ({ data }) => {
-  console.log("--table data--");
-  console.log(data);
+  // console.log("--table data--");
+  // console.log(data);
 
   return (
     // <Table >

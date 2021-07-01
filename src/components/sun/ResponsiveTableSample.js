@@ -10,7 +10,7 @@ const ResponsiveTable = ({ data }) => {
       <Table style={{ borderCollapse: "collapse" }}>
         <Thead>
           <Tr>
-            {Object.keys(data).map((key, index) => (
+            {Object.keys(data[0]).map((key, index) => (
               <Th
                 style={{
                   borderBottom: "1px solid rgba(224, 224, 224)",
@@ -27,7 +27,7 @@ const ResponsiveTable = ({ data }) => {
         <Tbody>
           {data.map((item) => (
             <Tr
-              key={`tr-${item.시간}-${item.지역}`}
+              key={`tr-${item.날짜}-${item.지역}`}
               style={{
                 border: "0px",
                 borderBottom: "1px solid rgba(224, 224, 224)",
@@ -41,7 +41,7 @@ const ResponsiveTable = ({ data }) => {
                   }}
                   key={`td-${index}`}
                 >
-                  {["시간", "지역"].indexOf(key) > -1 ? (
+                  {["날짜", "지역"].indexOf(key) > -1 ? (
                     <span>{item[key]}</span>
                   ) : (
                     <span>{item[key]}</span>
