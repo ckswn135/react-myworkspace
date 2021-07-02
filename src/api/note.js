@@ -1,15 +1,15 @@
 import axios from "axios";
 
 const noteApi = {
-  add: (data) => axios.post(`${process.env.REACT_APP_API_BASE}/note`, data),
-  fetch: () => axios.get(`${process.env.REACT_APP_API_BASE}/note`),
+  add: (data) => axios.post(`${process.env.REACT_APP_API_BASE}/notes`, data),
+  fetch: () => axios.get(`${process.env.REACT_APP_API_BASE}/notes`),
   fetchPaging: (page, size) =>
     axios.get(
-      `${process.env.REACT_APP_API_BASE}/note/paging?page=${page}&size=${size}`
+      `${process.env.REACT_APP_API_BASE}/notes/paging?page=${page}&size=${size}`
     ),
-  remove: (id) => axios.delete(`${process.env.REACT_APP_API_BASE}/note/${id}`),
+  remove: (id) => axios.delete(`${process.env.REACT_APP_API_BASE}/notes/${id}`),
   modify: (data) =>
-    axios.put(`${process.env.REACT_APP_API_BASE}/note/${data.id}`, data),
+    axios.put(`${process.env.REACT_APP_API_BASE}/notes/${data.id}`, data),
 };
 
 export default noteApi;

@@ -6,12 +6,10 @@ import ListItemText from "@material-ui/core/ListItemText";
 
 import { Check } from "@material-ui/icons";
 import { useState, useRef } from "react";
-import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 
 const NoteItem = ({ note }) => {
   const [isEdit, setIsEdit] = useState(note.isEdit);
-  const history = useHistory();
   const dispatch = useDispatch();
   const inputRef = useRef();
 
@@ -34,12 +32,7 @@ const NoteItem = ({ note }) => {
         <Check style={{ cursor: "pointer" }} />
       </ListItemIcon>
       {!isEdit && (
-        <ListItemText
-          style={{ cursor: "pointer" }}
-          onClick={() => {
-            history.push(`/note/${note.id}`);
-          }}
-        >
+        <ListItemText>
           {note.memo}
         </ListItemText>
       )}
