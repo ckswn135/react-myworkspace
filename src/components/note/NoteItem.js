@@ -31,11 +31,7 @@ const NoteItem = ({ note }) => {
       >
         <Check style={{ cursor: "pointer" }} />
       </ListItemIcon>
-      {!isEdit && (
-        <ListItemText>
-          {note.memo}
-        </ListItemText>
-      )}
+      {!isEdit && <ListItemText>{note.memo}</ListItemText>}
       {!isEdit && (
         <Button
           onClick={() => {
