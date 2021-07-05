@@ -29,7 +29,8 @@ import {
   TableChart,
   Menu as MenuIcon,
 } from "@material-ui/icons";
-
+import WbSunnyIcon from "@material-ui/icons/WbSunny";
+import NotesIcon from "@material-ui/icons/Notes";
 import Home from "./components/home/Home";
 import Sun from "./components/sun/Sun";
 
@@ -151,7 +152,7 @@ function App() {
         <Link to="/sun" className={classes.link}>
           <ListItem button>
             <ListItemIcon>
-              <TableChart />
+              <WbSunnyIcon />
             </ListItemIcon>
             <ListItemText>Sun</ListItemText>
           </ListItem>
@@ -159,7 +160,7 @@ function App() {
         <Link to="/note" className={classes.link}>
           <ListItem button>
             <ListItemIcon>
-              <TableChart />
+              <NotesIcon />
             </ListItemIcon>
             <ListItemText>Note</ListItemText>
           </ListItem>

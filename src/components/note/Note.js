@@ -36,7 +36,7 @@ const Note = () => {
         </Hidden>
         <Grid item xs={12} sm={10} md={8} lg={6}>
           <Paper className={classes.paper}>
-            <Typography variant="h3">Note</Typography>
+            <Typography variant="h3">메모</Typography>
             <Divider style={{ marginTop: "1rem", marginBottom: "2rem" }} />
             <NoteForm />
             <NoteList />

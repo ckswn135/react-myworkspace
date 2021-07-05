@@ -47,9 +47,18 @@ const transformMonthData = (source, location) => {
   const transData = source.filter((source) => {
     return source.location === location;
   });
-
   transData.reverse();
-  return transData;
+  return transData.map((item) => {
+    let newItem = {
+      날짜: item.locdate,
+      지역: item.location,
+      일출: item.sunrise,
+      일몰: item.sunset,
+      월출: item.moonrise,
+      월몰: item.moonset,
+    };
+    return newItem;
+  });
 };
 
 const transformLocationTableData = (source) => {

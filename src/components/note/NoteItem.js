@@ -1,10 +1,8 @@
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 
-import { Check } from "@material-ui/icons";
 import { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 
@@ -24,16 +22,20 @@ const NoteItem = ({ note }) => {
 
   return (
     <ListItem>
-      <ListItemIcon
-        onClick={() => {
-          remove(note.id);
-        }}
-      >
-        <Check style={{ cursor: "pointer" }} />
-      </ListItemIcon>
       {!isEdit && <ListItemText>{note.memo}</ListItemText>}
       {!isEdit && (
         <Button
+          variant="outlined"
+          onClick={() => {
+            remove(note.id);
+          }}
+        >
+          delete
+        </Button>
+      )}
+      {!isEdit && (
+        <Button
+          variant="outlined"
           onClick={() => {
             setIsEdit(true);
           }}
@@ -53,6 +55,7 @@ const NoteItem = ({ note }) => {
       )}
       {isEdit && (
         <Button
+          variant="outlined"
           onClick={() => {
             save(note.id);
             setIsEdit(false);
@@ -63,6 +66,7 @@ const NoteItem = ({ note }) => {
       )}
       {isEdit && (
         <Button
+          variant="outlined"
           onClick={() => {
             setIsEdit(false);
           }}
